@@ -1,20 +1,31 @@
 package com.pondthaitay.calculator.mvc;
 
-public class Calculator {
+class Calculator {
 
-    public int plus(int x, int y) {
+    private static Calculator instance;
+
+    static Calculator getInstance() {
+        if (instance == null)
+            instance = new Calculator();
+        return instance;
+    }
+
+    int plus(int x, int y) {
         return x + y;
     }
 
-    public int minus(int x, int y) {
+    int minus(int x, int y) {
         return x - y;
     }
 
-    public int multiply(int x, int y) {
+    int multiply(int x, int y) {
         return x * y;
     }
 
-    public int divide(int x, int y) {
+    int divide(int x, int y) {
+        if (y == 0) {
+            throw new DividedByZeroException();
+        }
         return x / y;
     }
 }

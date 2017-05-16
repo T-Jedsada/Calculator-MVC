@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Calculator-MVC</string>
+    <string name="plus">+</string>
+    <string name="divide">/</string>
+    <string name="minus">-</string>
+    <string name="multiply">x</string>
+    <string name="enter_number_one">Enter number one</string>
+    <string name="enter_number_two">Enter number two</string>
 </resources>
