@@ -1,10 +1,12 @@
 package com.pondthaitay.calculator.mvc;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainView {
 
@@ -47,6 +49,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return numbers;
     }
 
+    private void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -66,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+        hideKeyboard(this);
     }
 
     @Override
